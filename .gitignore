@@ -12,3 +12,4 @@ Cargo.lock
 **/.exercism/
 **/.gitignore
 HELP.md
+**/.idea/

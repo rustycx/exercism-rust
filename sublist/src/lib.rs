@@ -6,6 +6,7 @@ pub enum Comparison {
     Unequal,
 }
 
+#[rustfmt::skip]
 pub fn sublist<T: Eq>(a: &[T], b: &[T]) -> Comparison {
     use Comparison::*;
     match (a.len(), b.len()) {
