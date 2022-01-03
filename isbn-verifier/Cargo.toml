@@ -1,0 +1,10 @@
+[package]
+edition = "2021"
+name = "isbn-verifier"
+version = "2.7.0"
+
+[lib]
+doctest = false
+
+[dependencies]
+regex = "1.5.4"
