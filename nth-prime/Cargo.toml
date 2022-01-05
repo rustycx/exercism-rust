@@ -1,0 +1,9 @@
+[package]
+edition = "2021"
+name = "nth_prime"
+version = "2.1.0"
+
+[dependencies]
+
+[lib]
+doctest = false
