@@ -1,0 +1,7 @@
+[package]
+edition = "2021"
+name = "queen-attack"
+version = "2.2.0"
+
+[lib]
+doctest = false
