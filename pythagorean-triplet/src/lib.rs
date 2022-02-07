@@ -21,6 +21,7 @@ pub fn find1(sum: u32) -> HashSet<[u32; 3]> {
 }
 
 // https://exercism.org/tracks/rust/exercises/pythagorean-triplet/solutions/nerigardu
+// b = n/2 - n*a/2/(n-a), n must an even number
 pub fn find(sum: u32) -> HashSet<[u32; 3]> {
     if sum % 2 != 0 {
         return HashSet::new();
@@ -28,7 +29,7 @@ pub fn find(sum: u32) -> HashSet<[u32; 3]> {
     (3..)
         .filter(|a| sum * a % (sum - a) == 0)
         // .take_while(|a| (sum - a).pow(2) > sum.pow(2) / 2)
-        .take_while(|a| sum.pow(2) > 2 * a * (2 * sum - a))
+        .take_while(|a| sum.pow(2) > 2 * a * (2 * sum - a)) // because b > a
         .map(|a| {
             let b = (sum / 2) * (sum - 2 * a) / (sum - a);
             let c = sum - (a + b);

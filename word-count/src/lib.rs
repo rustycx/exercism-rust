@@ -15,7 +15,8 @@ pub fn word_count0(words: &str) -> HashMap<String, u32> {
 pub fn word_count(words: &str) -> HashMap<String, u32> {
     words
         .to_lowercase()
-        .split_terminator(&[' ', '\t', '\n', ':', ','][..])
+        .split_terminator(&[' ', '\t', '\n', ':', ',', '.'][..])
+        // .split(&[' ', '\t', '\n', ':', ','][..])
         .filter_map(|w| match w.trim_matches(|ch: char| !ch.is_alphanumeric()) {
             w if w.is_empty() => None,
             w => Some(w),

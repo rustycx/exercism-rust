@@ -1,4 +1,4 @@
-pub fn number(user_number: &str) -> Option<String> {
+pub fn number0(user_number: &str) -> Option<String> {
     let number = user_number
         .chars()
         .filter(|ch| ch.is_digit(10))
@@ -6,6 +6,19 @@ pub fn number(user_number: &str) -> Option<String> {
         .collect::<Vec<char>>();
     if number.len() == 10 && (number[0] != '0' && number[0] != '1') && (number[3] != '0' && number[3] != '1') {
         Some(number.iter().collect())
+    } else {
+        None
+    }
+}
+
+pub fn number(user_number: &str) -> Option<String> {
+    let number = user_number
+        .chars()
+        .filter_map(|ch| ch.to_digit(10))
+        .skip_while(|&c| c == 1)
+        .collect::<Vec<_>>();
+    if number.len() == 10 && number[0] > 1 && number[3] > 1 {
+        number.iter().map(|&n| char::from_digit(n, 10)).collect()
     } else {
         None
     }
