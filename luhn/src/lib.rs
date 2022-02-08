@@ -21,7 +21,7 @@ pub fn is_valid1(mut code: &str) -> bool {
 
 pub fn is_valid2(code: &str) -> bool {
     let code = code.trim();
-    if code.len() < 2 || !code.chars().all(|ch| ch.is_digit(10) || ch.is_whitespace()) {
+    if code.len() <=1 || !code.chars().all(|ch| ch.is_digit(10) || ch.is_whitespace()) {
         return false;
     }
 
