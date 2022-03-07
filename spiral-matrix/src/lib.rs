@@ -55,7 +55,7 @@ pub fn spiral_matrix0(size: u32) -> Vec<Vec<u32>> {
 
 // https://exercism.org/tracks/rust/exercises/spiral-matrix/solutions/denenr
 const VECTORS: [(i32, i32); 4] = [(0, 1), (1, 0), (0, -1), (-1, 0)];
-pub fn spiral_matrix(size: usize) -> Vec<Vec<u32>> {
+pub fn spiral_matrix1(size: usize) -> Vec<Vec<u32>> {
     let mut matrix = vec![vec![0; size]; size];
     let mut movement = VECTORS.iter().cycle();
     let (mut x, mut y, mut n) = (0, -1, 1..);
@@ -66,6 +66,35 @@ pub fn spiral_matrix(size: usize) -> Vec<Vec<u32>> {
         x += move_x;
         y += move_y;
         matrix[x as usize][y as usize] = n.next().unwrap();
+    }
+    matrix
+}
+
+pub fn spiral_matrix(size: usize) -> Vec<Vec<u32>> {
+    let mut matrix = vec![vec![0; size]; size];
+    let (mut left, mut right, mut top, mut bottom) = (0, size as i32 - 1, 0, size as i32 - 1);
+    let mut n = 1u32;
+    while top <= bottom && left <= right {
+        for j in left..=right {
+            matrix[top as usize][j as usize] = n;
+            n += 1;
+        }
+        top += 1;
+        for i in top..=bottom {
+            matrix[i as usize][right as usize] = n;
+            n += 1;
+        }
+        right -= 1;
+        for j in (left..=right).rev() {
+            matrix[bottom as usize][j as usize] = n;
+            n += 1;
+        }
+        bottom -= 1;
+        for i in (top..=bottom).rev() {
+            matrix[i as usize][left as usize] = n;
+            n += 1;
+        }
+        left += 1;
     }
     matrix
 }

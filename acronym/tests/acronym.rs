@@ -23,12 +23,6 @@ fn camelcase() {
 
 #[test]
 #[ignore]
-fn camelcase2() {
-    assert_eq!(acronym::abbreviate("HyperTextABC Markup Language"), "HTAML");
-}
-
-#[test]
-#[ignore]
 fn punctuation() {
     assert_eq!(acronym::abbreviate("First In, First Out"), "FIFO");
 }
