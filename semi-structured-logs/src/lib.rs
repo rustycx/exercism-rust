@@ -7,10 +7,21 @@ pub enum LogLevel {
     Debug,
 }
 /// primary function for emitting logs
-pub fn log(level: LogLevel, message: &str) -> String {
+pub fn log0(level: LogLevel, message: &str) -> String {
     let level = format!("{:?}", level).to_uppercase();
     format!("[{}]: {}", level, message)
 }
+
+pub fn log(level: LogLevel, message: &str) -> String {
+    let level = match level {
+        LogLevel::Info => "INFO",
+        LogLevel::Warning => "WARNING",
+        LogLevel::Error => "ERROR",
+        LogLevel::Debug => "DEBUG",
+    };
+    format!("[{}]: {}", level, message)
+}
+
 pub fn info(message: &str) -> String {
     log(LogLevel::Info, message)
 }

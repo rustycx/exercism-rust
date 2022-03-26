@@ -1,5 +1,3 @@
-#![feature(destructuring_assignment)]
-
 /// Create an empty vector
 pub fn create_empty() -> Vec<u8> {
     vec![]
@@ -16,13 +14,24 @@ pub fn create_buffer(count: usize) -> Vec<u8> {
 ///
 /// Fibonacci's sequence is the list of numbers where the next number is a sum of the previous two.
 /// Its first five elements are `1, 1, 2, 3, 5`.
-pub fn fibonacci() -> Vec<u8> {
+pub fn fibonacci0() -> Vec<u8> {
     let mut fib = Vec::with_capacity(5);
     let mut a = 0;
     let mut b = 1;
     for _ in 0..5 {
         (a, b) = (b, a + b);
         fib.push(a);
+    }
+    fib
+}
+
+pub fn fibonacci() -> Vec<u8> {
+    let mut fib = create_buffer(5);
+    for i in 0..5 {
+        match i {
+            0 | 1 => fib[i] = 1,
+            _ => fib[i] = fib[i-1] + fib[i-2],
+        }
     }
     fib
 }

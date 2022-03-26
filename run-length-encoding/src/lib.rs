@@ -33,6 +33,8 @@ pub fn decode0(source: &str) -> String {
 }
 
 pub fn decode(source: &str) -> String {
+    let k = std::iter::repeat(3).take(10);
+    println!("{k:?}");
     source
         .split(|c: char| !c.is_digit(10))
         .map(|cnt| cnt.parse::<usize>().unwrap_or(1))

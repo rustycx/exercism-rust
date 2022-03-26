@@ -1,5 +1,7 @@
 use std::iter::FromIterator;
 
+// type Link<T> = Option<Box<Node<T>>>;
+
 pub struct SimpleLinkedList<T> {
     head: Option<Box<Node<T>>>,
 }
